@@ -34,17 +34,17 @@ search: false
   height: 4px !important;
 }
 
-/* Podpora pro aktivní stav v menu (včetně skrytých položek v rozbalovacím menu) */
-.greedy-nav .visible-links .active > a::before,
-.greedy-nav .hidden-links .active > a::before {
+/* Aktivní stav menu řízený JavaScriptem přes třídu active-link */
+.greedy-nav .visible-links a.active-link,
+.greedy-nav .hidden-links a.active-link {
+  color: #e60000 !important;
+}
+
+.greedy-nav .visible-links a.active-link::before,
+.greedy-nav .hidden-links a.active-link::before {
   background: #e60000 !important;
   height: 4px !important;
   display: block !important;
-}
-
-.greedy-nav .visible-links .active > a,
-.greedy-nav .hidden-links .active > a {
-  color: #e60000 !important;
 }
 
 
@@ -62,10 +62,6 @@ search: false
   box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 
-body {
-  padding-top: 65px !important;
-}
-
 
 /* ==========================================================
    4. ODSTRANĚNÍ NEŽÁDOUCÍCH RÁMEČKŮ (FOCUS / TARGET)
@@ -76,6 +72,7 @@ a:focus, button:focus, .site-title:focus, :target, h1:focus, h2:focus, h3:focus 
   outline: none !important;
   box-shadow: none !important;
 }
+
 
 /* ==========================================================
    5. ÚPRAVA VELIKOSTI PÍSMA A HORNÍ LIŠTY
