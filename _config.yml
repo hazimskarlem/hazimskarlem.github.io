@@ -10,15 +10,15 @@
 # Review documentation to determine if you should use `theme` or `remote_theme`
 # https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/#installing-the-theme
 
-# theme                  : "minimal-mistakes-jekyll"
-# remote_theme           : "mmistakes/minimal-mistakes"
+# theme                 : "minimal-mistakes-jekyll"
+# remote_theme          : "mmistakes/minimal-mistakes"
 minimal_mistakes_skin    : "neon"
 # "default", "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise", "catppuccin_latte", "catppuccin_mocha"
 
 # Site Settings
-locale                   : "cs-CZ"
-direction                : # "ltr" (default), "rtl" # set the direction of the page
-title                    : "Házím s Karlem"
+locale                  : "cs-CZ"
+direction               : # "ltr" (default), "rtl" # set the direction of the page
+title                   : "Házím s Karlem"
 title_separator          : "-"
 subtitle                 : # site tagline that appears below site title in masthead
 name                     : "Karel Novák"
@@ -112,59 +112,44 @@ analytics:
     tracking_id          :
     anonymize_ip         : # true, false (default)
 
-
 # Site Author
 author:
-  name             : "Your Name"
-  avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio              : "I am an **amazing** person."
-  location         : "Somewhere"
-  email            :
-  # fediverse      : "@you@instance.social"  # used for fediverse:creator meta tag
+  name                   : "Your Name"
+  avatar                 : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
+  bio                    : "I am an **amazing** person."
+  location               : "Somewhere"
+  email                  :
+  # fediverse            : "@you@instance.social"  # used for fediverse:creator meta tag
   links:
     - label: "Email"
       icon: "fas fa-fw fa-square-envelope"
-      # url: "mailto:karel.novak@hazimskarlem.cz"
     - label: "Website"
       icon: "fas fa-fw fa-link"
-      # url: "https://hazimskarlem.cz"
     - label: "Twitter"
       icon: "fab fa-fw fa-square-x-twitter"
-      # url: "https://twitter.com/"
     - label: "Facebook"
       icon: "fab fa-fw fa-square-facebook"
-      # url: "https://facebook.com/"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
-      # url: "https://github.com/"
     - label: "Instagram"
       icon: "fab fa-fw fa-instagram"
-      # url: "https://instagram.com/"
 
 # Site Footer
 footer:
   links:
     - label: "Twitter"
       icon: "fab fa-fw fa-square-x-twitter"
-      # url:
-      # rel: "me"  # optional: adds rel attribute (e.g. for IndieWeb web sign-in)
     - label: "Facebook"
       icon: "fab fa-fw fa-square-facebook"
-      # url:
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
-      # url:
     - label: "GitLab"
       icon: "fab fa-fw fa-gitlab"
-      # url:
     - label: "Bitbucket"
       icon: "fab fa-fw fa-bitbucket"
-      # url:
     - label: "Instagram"
       icon: "fab fa-fw fa-instagram"
-      # url:
   since: "2013"
-
 
 # Reading Files
 include:
@@ -196,14 +181,13 @@ exclude:
   - Rakefile
   - README
   - tmp
-  - /docs # ignore Minimal Mistakes /docs
-  - /test # ignore Minimal Mistakes /test
+  - /docs
+  - /test
 keep_files:
   - .git
   - .svn
 encoding: "utf-8"
 markdown_ext: "markdown,mkdown,mkdn,mkd,md"
-
 
 # Conversion
 markdown: kramdown
@@ -211,7 +195,6 @@ highlighter: rouge
 lsi: false
 excerpt_separator: "\n\n"
 incremental: false
-
 
 # Markdown Processing
 kramdown:
@@ -224,30 +207,22 @@ kramdown:
   smart_quotes: lsquo,rsquo,ldquo,rdquo
   enable_coderay: false
 
-
 # Sass/SCSS
 sass:
   sass_dir: _sass
-  style: compressed # https://sass-lang.com/documentation/file.SASS_REFERENCE.html#output_style
+  style: compressed
   quiet_deps: true
   silence_deprecations: ['import']
 
-
 # Outputting
 permalink: /:categories/:title/
-timezone: # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
-
+timezone:
 
 # Pagination with jekyll-paginate
-paginate: 5 # amount of posts to show
+paginate: 5
 paginate_path: /page:num/
 
-# Pagination with jekyll-paginate-v2
-# See https://github.com/sverrirs/jekyll-paginate-v2/blob/master/README-GENERATOR.md#site-configuration
-#   for configuration details
 pagination:
-  # Set enabled to true to use paginate v2
-  # enabled: true
   debug: false
   collection: 'posts'
   per_page: 10
@@ -263,8 +238,6 @@ pagination:
     before: 2
     after: 2
 
-
-# Plugins (previously gems:)
 plugins:
   - jekyll-paginate
   - jekyll-sitemap
@@ -272,7 +245,6 @@ plugins:
   - jekyll-feed
   - jekyll-include-cache
 
-# mimic GitHub Pages with --safe
 whitelist:
   - jekyll-paginate
   - jekyll-sitemap
@@ -280,48 +252,19 @@ whitelist:
   - jekyll-feed
   - jekyll-include-cache
 
-
-# Archives
-#  Type
-#  - GitHub Pages compatible archive pages built with Liquid ~> type: liquid (default)
-#  - Jekyll Archives plugin archive pages ~> type: jekyll-archives
-#  Path (examples)
-#  - Archive page should exist at path when using Liquid method or you can
-#    expect broken links (especially with breadcrumbs enabled)
-#  - <base_path>/tags/my-awesome-tag/index.html ~> path: /tags/
-#  - <base_path>/categories/my-awesome-category/index.html ~> path: /categories/
-#  - <base_path>/my-awesome-category/index.html ~> path: /
 category_archive:
   type: liquid
   path: /categories/
 tag_archive:
   type: liquid
   path: /tags/
-# show_taxonomy: false  # set to false to hide tag/category lists on posts
-# https://github.com/jekyll/jekyll-archives
-# jekyll-archives:
-#   enabled:
-#     - categories
-#     - tags
-#   layouts:
-#     category: archive-taxonomy
-#     tag: archive-taxonomy
-#   permalinks:
-#     category: /categories/:name/
-#     tag: /tags/:name/
 
-
-# HTML Compression
-# - https://jch.penibelst.de/
 compress_html:
   clippings: all
   ignore:
     envs: development
 
-
-# Defaults
 defaults:
-  # _posts
   - scope:
       path: ""
       type: posts
@@ -329,7 +272,6 @@ defaults:
       layout: single
       author_profile: true
       read_time: true
-      comments: # true
+      comments:
       share: true
       related: true
-
