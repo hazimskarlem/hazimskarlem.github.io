@@ -9,15 +9,13 @@ search: false
 @import "minimal-mistakes"; // main partials
 
 /* ==========================================================
-   1. NÁZEV WEBU (Vlevo nahoře - např. "Hážím s Karlem")
+   1. NÁZEV WEBU (Vlevo nahoře)
    ========================================================== */
 
-/* Trvale sytě červená barva */
 .site-title {
   color: #e60000 !important;
 }
 
-/* Jemné ztmavení nebo změna při najetí myši na název webu */
 .site-title:hover {
   color: #cc0000 !important;
 }
@@ -27,77 +25,77 @@ search: false
    2. HORNÍ MENU (Hover a aktivní stav)
    ========================================================== */
 
-/* Text v menu při najetí myši ztmavne do černa */
 .greedy-nav a:hover {
   color: #000000 !important;
 }
 
-/* Červené podtržení při najetí myši (hover) */
 .greedy-nav .visible-links a:hover::before {
-  background: #e60000 !important;
-  height: 4px !important; /* tloušťka linky */
-}
-
-/* Červené podtržení zůstane svítit na té stránce, kde se právě nacházíš (active) */
-.greedy-nav .visible-links .active > a::before {
   background: #e60000 !important;
   height: 4px !important;
 }
 
-/* Text aktivní položky v menu může být také sytě červený, ať je to viditelné */
-.greedy-nav .visible-links .active > a {
+/* Podpora pro aktivní stav v menu (včetně skrytých položek v rozbalovacím menu) */
+.greedy-nav .visible-links .active > a::before,
+.greedy-nav .hidden-links .active > a::before {
+  background: #e60000 !important;
+  height: 4px !important;
+  display: block !important;
+}
+
+.greedy-nav .visible-links .active > a,
+.greedy-nav .hidden-links .active > a {
   color: #e60000 !important;
 }
 
+
 /* ==========================================================
-   FIXNÍ (PŘILEPENÉ) HORNÍ MENU
+   3. FIXNÍ (PŘILEPENÉ) HORNÍ MENU
    ========================================================== */
 
-/* Přilepení celého horního panelu (masthead) k vršku obrazovky */
 .masthead {
   position: fixed !important;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 9999;
-  background-color: #ffffff !important; /* Bílé pozadí, aby pod tím neprosvítal text */
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* Jemný stín pod menu pro lepší vzhled */
+  background-color: #ffffff !important;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 
-/* Odsazení zbytku stránky dolů, aby horní menu nepřekrylo úvodní fotku */
 body {
   padding-top: 65px !important;
 }
 
-/* Odstranění nehezkého ohraničení (focus ring) po kliknutí na odkazy v menu */
-.greedy-nav a:focus,
-.greedy-nav button:focus,
-.site-title:focus {
+
+/* ==========================================================
+   4. ODSTRANĚNÍ NEŽÁDOUCÍCH RÁMEČKŮ (FOCUS / TARGET)
+   ========================================================== */
+
+/* Zabrání problikávání ohraničení po kliknutí na odkazy, tlačítka a cíle kotev */
+a:focus, button:focus, .site-title:focus, :target, h1:focus, h2:focus, h3:focus {
   outline: none !important;
   box-shadow: none !important;
 }
 
+
 /* ==========================================================
-   ÚPRAVA VELIKOSTI PÍSMA
+   5. ÚPRAVA VELIKOSTI PÍSMA
    ========================================================== */
 
-/* 1. Zmenšení celkového základního textu na webu (výchozí je většinou kolem 16px) */
 body {
-  font-size: 15px !important; /* Můžeš zkusit i 14.5px, kdyby to bylo pořád velké */
+  font-size: 15px !important;
 }
 
-/* 2. Zmenšení písma v horním menu (včetně odkazu na název webu) */
 .masthead__menu-item,
 .greedy-nav .visible-links a,
 .site-title {
-  font-size: 0.9rem !important; /* Lehce menší, elegantnější */
-  font-weight: 500; /* Jemnější tloušťka písma, ať to nepůsobí moc robustně */
+  font-size: 0.9rem !important;
+  font-weight: 500;
 }
 
-/* 3. Zmenšení a zjemnění nadpisů (h1, h2, h3), aby nebyly tak obrovské */
 .page__title, 
 h1, h2, h3 {
-  letter-spacing: -0.02em; /* Mírné přitažení písmen k sobě (moderní vzhled) */
+  letter-spacing: -0.02em;
 }
 
 h1 { font-size: 2rem !important; }
