@@ -8,17 +8,23 @@ search: false
 @import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
 @import "minimal-mistakes"; // main partials
 
+/* --- SEM PŘIJDE TVŮJ VLASTNÍ KÓD NA KONCI --- */
+
 /* Změna barvy názvu webu vlevo nahoře */
-.masthead__menu-item.masthead__menu-item--lg a {
-  color: #e60000 !important; /* Sytě červená */
+.site-title {
+  color: #e60000 !important;
 }
 
-/* Změna barvy podtržení a textu v menu při najetí myši (hover) */
+.site-title:hover {
+  color: #cc0000 !important;
+}
+
+/* Změna barvy textu v menu při najetí */
 .greedy-nav a:hover {
   color: #e60000 !important;
 }
 
-/* Pokud chceš sytě červenou linku/podtržení pod aktivní nebo hover položkou v menu */
+/* Červené podtržení pod aktivní nebo hover položkou v menu */
 .greedy-nav .visible-links a:hover::before,
 .greedy-nav .visible-links .active > a::before {
   background: #e60000 !important;
