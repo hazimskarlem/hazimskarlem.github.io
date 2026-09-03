@@ -19,32 +19,46 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // 2. Logika pro scrollování a kotvy na hlavní stránce
     const sections = document.querySelectorAll("div[id]");
-    if (sections.length > 0 && (currentPath === "/" || currentPath.endsWith("/index.html"))) {
-        let isClickScrolling = false;
+    
+    // Ošetření kliknutí na menu (funguje i při přechodu z jiné podstránky na kotvu)
+    navLinks.forEach(link => {
+        link.addEventListener("click", function(e) {
+            const href = this.getAttribute("href");
+            if (!href) return;
 
-        navLinks.forEach(link => {
-            link.addEventListener("click", function() {
-                const href = this.getAttribute("href");
-                if (href && (href.startsWith("#") || href.includes("/#"))) {
-                    isClickScrolling = true;
-                    
+            // Pokud jsme na jiné stránce a klikáme na kotvu směřující na hlavní stránku
+            const isHome = (currentPath === "/" || currentPath.endsWith("/index.html"));
+            if (!isHome && (href.startsWith("#") || href.includes("/#"))) {
+                // Necháme prohlížeč přejít na hlavní stránku s kotvou, plynulé scrollování se o zbytek postará samo
+                return;
+            }
+
+            if (href.startsWith("#") || href.includes("/#")) {
+                // Pokud jsme na hlavní stránce, zajistíme plynulý skok a aktivní stav
+                const targetId = href.substring(href.indexOf("#"));
+                const targetElement = document.querySelector(targetId);
+
+                if (targetElement && isHome) {
+                    e.preventDefault();
+                    targetElement.scrollIntoView({ behavior: "smooth" });
+
+                    // Aktualizace URL bez nutnosti reloadu
+                    history.pushState(null, null, href);
+
+                    // Nastavení aktivní třídy
                     navLinks.forEach(l => {
-                        const lHref = l.getAttribute("href");
-                        if (lHref && (lHref.startsWith("#") || lHref.includes("/#"))) {
-                            l.classList.remove("active-link");
-                            if (l.parentElement) l.parentElement.classList.remove("active");
-                        }
+                        l.classList.remove("active-link");
+                        if (l.parentElement) l.parentElement.classList.remove("active");
                     });
-
                     this.classList.add("active-link");
                     if (this.parentElement) this.parentElement.classList.add("active");
-
-                    setTimeout(() => {
-                        isClickScrolling = false;
-                    }, 600);
                 }
-            });
+            }
         });
+    });
+
+    if (sections.length > 0 && (currentPath === "/" || currentPath.endsWith("/index.html"))) {
+        let isClickScrolling = false;
 
         window.addEventListener("scroll", function() {
             if (isClickScrolling) return;
