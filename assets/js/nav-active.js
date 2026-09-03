@@ -17,61 +17,38 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 
-    // 2. Logika pro scrollování a kotvy na hlavní stránce
-    const sections = document.querySelectorAll("div[id]");
-    
-    // Ošetření kliknutí na menu (funguje i při přechodu z jiné podstránky na kotvu)
+    // 2. Logika pro aktivní stavy v menu při kliknutí a scrollování
+    const sections = document.querySelectorAll("div[id], section[id]");
+    const isHome = (currentPath === "/" || currentPath.endsWith("/index.html"));
+
     navLinks.forEach(link => {
-        link.addEventListener("click", function(e) {
+        link.addEventListener("click", function() {
             const href = this.getAttribute("href");
             if (!href) return;
 
-            // Pokud jsme na jiné stránce a klikáme na kotvu směřující na hlavní stránku
-            const isHome = (currentPath === "/" || currentPath.endsWith("/index.html"));
-            if (!isHome && (href.startsWith("#") || href.includes("/#"))) {
-                // Necháme prohlížeč přejít na hlavní stránku s kotvou, plynulé scrollování se o zbytek postará samo
-                return;
-            }
-
-            if (href.startsWith("#") || href.includes("/#")) {
-                // Pokud jsme na hlavní stránce, zajistíme plynulý skok a aktivní stav
-                const targetId = href.substring(href.indexOf("#"));
-                const targetElement = document.querySelector(targetId);
-
-                if (targetElement && isHome) {
-                    e.preventDefault();
-                    targetElement.scrollIntoView({ behavior: "smooth" });
-
-                    // Aktualizace URL bez nutnosti reloadu
-                    history.pushState(null, null, href);
-
-                    // Nastavení aktivní třídy
-                    navLinks.forEach(l => {
-                        l.classList.remove("active-link");
-                        if (l.parentElement) l.parentElement.classList.remove("active");
-                    });
-                    this.classList.add("active-link");
-                    if (this.parentElement) this.parentElement.classList.add("active");
-                }
+            // Pokud jsme na hlavní stránce a klikáme na kotvu
+            if (isHome && (href.startsWith("#") || href.includes("/#"))) {
+                navLinks.forEach(l => {
+                    l.classList.remove("active-link");
+                    if (l.parentElement) l.parentElement.classList.remove("active");
+                });
+                this.classList.add("active-link");
+                if (this.parentElement) this.parentElement.classList.add("active");
             }
         });
     });
 
-    if (sections.length > 0 && (currentPath === "/" || currentPath.endsWith("/index.html"))) {
-        let isClickScrolling = false;
-
+    if (sections.length > 0 && isHome) {
         window.addEventListener("scroll", function() {
-            if (isClickScrolling) return;
-
             let scrollY = window.pageYOffset;
             let currentSectionId = "";
 
             sections.forEach(section => {
                 const sectionHeight = section.offsetHeight;
-                const sectionTop = section.offsetTop - 120; 
+                const sectionTop = section.offsetTop - 140; 
                 const sectionId = section.getAttribute("id");
 
-                if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight + 100) {
+                if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
                     currentSectionId = sectionId;
                 }
             });
@@ -80,7 +57,6 @@ document.addEventListener("DOMContentLoaded", function() {
                 const href = link.getAttribute("href");
                 if (!href) return;
 
-                // Práce s kotvovými odkazy (sekce)
                 if (href.startsWith("#") || href.includes("/#")) {
                     const isMatch = (href === "#" + currentSectionId || href === "/#" + currentSectionId);
                     if (isMatch) {
@@ -91,7 +67,6 @@ document.addEventListener("DOMContentLoaded", function() {
                         if (link.parentElement) link.parentElement.classList.remove("active");
                     }
                 } 
-                // Speciální pravidlo pro "Domů": Zhasni ho, jakmile uživatel sjede dolů do sekcí
                 else if (href === "/" || href === "") {
                     if (scrollY > 200 || currentSectionId !== "") {
                         link.classList.remove("active-link");
