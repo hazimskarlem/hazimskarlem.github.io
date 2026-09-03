@@ -22,20 +22,20 @@ search: false
 
 
 /* ==========================================================
-   2. HORNÍ MENU (Hover a aktivní stav s červeným podtržením)
+   2. HORNÍ MENU - ULTIMÁTNÍ OPRAVA PODTRŽENÍ
    ========================================================== */
 
 .greedy-nav a:hover {
   color: #000000 !important;
 }
 
-/* Zajištění pozice pro správné vykreslení podtržení */
+/* Odkazy v menu musí mít relativní pozici, aby se podtržení mělo čeho chytit */
 .greedy-nav .visible-links a,
 .greedy-nav .hidden-links a {
   position: relative !important;
 }
 
-/* Hover efekt podtržení */
+/* Hover efekt */
 .greedy-nav .visible-links a:hover::before {
   content: "" !important;
   position: absolute !important;
@@ -47,8 +47,10 @@ search: false
   display: block !important;
 }
 
-/* Aktivní stav - červené podtržení natvrdo při .active-link */
+/* Nekompromisní vynucení červeného podtržení pro jakoukoliv aktivní variantu */
+.greedy-nav .visible-links li.active > a::before,
 .greedy-nav .visible-links a.active-link::before,
+.greedy-nav .hidden-links li.active > a::before,
 .greedy-nav .hidden-links a.active-link::before {
   content: "" !important;
   position: absolute !important;
@@ -58,18 +60,8 @@ search: false
   height: 4px !important;
   background: #e60000 !important;
   display: block !important;
-}
-
-.greedy-nav .visible-links li.active > a::before,
-.greedy-nav .hidden-links li.active > a::before {
-  content: "" !important;
-  position: absolute !important;
-  bottom: 0 !important;
-  left: 0 !important;
-  width: 100% !important;
-  height: 4px !important;
-  background: #e60000 !important;
-  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
 }
 
 
