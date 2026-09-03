@@ -48,3 +48,23 @@ search: false
 .greedy-nav .visible-links .active > a {
   color: #e60000 !important;
 }
+
+/* ==========================================================
+   FIXNÍ (PŘILEPENÉ) HORNÍ MENU
+   ========================================================== */
+
+/* Přilepení celého horního panelu (masthead) k vršku obrazovky */
+.masthead {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9999;
+  background-color: #ffffff !important; /* Bílé pozadí, aby pod tím neprosvítal text */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* Jemný stín pod menu pro lepší vzhled */
+}
+
+/* Odsazení zbytku stránky dolů, aby horní menu nepřekrylo úvodní fotku */
+body {
+  padding-top: 65px !important;
+}
