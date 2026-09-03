@@ -35,25 +35,34 @@ document.addEventListener("DOMContentLoaded", function() {
 
     window.addEventListener("scroll", function() {
         let scrollY = window.pageYOffset;
+        let currentSectionId = "";
 
+        // Zjistíme, která sekce je právě v zorném poli
         sections.forEach(section => {
             const sectionHeight = section.offsetHeight;
-            // Odečítáme horní odsazení menu (65px) + menší rezervu
-            const sectionTop = section.offsetTop - 120; 
+            const sectionTop = section.offsetTop - 100; // Rezerva pro horní lištu
             const sectionId = section.getAttribute("id");
 
-            if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight + 150) {
-                navLinks.forEach(link => {
-                    if (link.parentElement) {
-                        link.parentElement.classList.remove("active");
-                    }
-                    const href = link.getAttribute("href");
-                    if (href === "#" + sectionId || href === "/#" + sectionId) {
-                        if (link.parentElement) {
-                            link.parentElement.classList.add("active");
-                        }
-                    }
-                });
+            if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight + 200) {
+                currentSectionId = sectionId;
+            }
+        });
+
+        // Projdeme menu a nastavíme třídu active-link jen tomu správnému odkazu
+        navLinks.forEach(link => {
+            const href = link.getAttribute("href");
+            const isMatch = (href === "#" + currentSectionId || href === "/#" + currentSectionId);
+
+            if (isMatch) {
+                link.classList.add("active-link");
+                if (link.parentElement) {
+                    link.parentElement.classList.add("active");
+                }
+            } else {
+                link.classList.remove("active-link");
+                if (link.parentElement) {
+                    link.parentElement.classList.remove("active");
+                }
             }
         });
     });
