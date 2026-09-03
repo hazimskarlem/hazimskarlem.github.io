@@ -1,6 +1,14 @@
 # Hlavní navigační menu
 main:
-  - title: "Profil"
+  - title: "Domů"
     url: /
+  - title: "O mně"
+    url: /#profil
+  - title: "Ceník"
+    url: /#cenik
+  - title: "Rezervace"
+    url: /#rezervace
+  - title: "Kontakt"
+    url: /#kontakt
   - title: "Články"
     url: /clanky/
