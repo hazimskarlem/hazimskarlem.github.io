@@ -76,3 +76,30 @@ body {
   outline: none !important;
   box-shadow: none !important;
 }
+
+/* ==========================================================
+   ÚPRAVA VELIKOSTI PÍSMA
+   ========================================================== */
+
+/* 1. Zmenšení celkového základního textu na webu (výchozí je většinou kolem 16px) */
+body {
+  font-size: 15px !important; /* Můžeš zkusit i 14.5px, kdyby to bylo pořád velké */
+}
+
+/* 2. Zmenšení písma v horním menu (včetně odkazu na název webu) */
+.masthead__menu-item,
+.greedy-nav .visible-links a,
+.site-title {
+  font-size: 0.9rem !important; /* Lehce menší, elegantnější */
+  font-weight: 500; /* Jemnější tloušťka písma, ať to nepůsobí moc robustně */
+}
+
+/* 3. Zmenšení a zjemnění nadpisů (h1, h2, h3), aby nebyly tak obrovské */
+.page__title, 
+h1, h2, h3 {
+  letter-spacing: -0.02em; /* Mírné přitažení písmen k sobě (moderní vzhled) */
+}
+
+h1 { font-size: 2rem !important; }
+h2 { font-size: 1.6rem !important; }
+h3 { font-size: 1.3rem !important; }
