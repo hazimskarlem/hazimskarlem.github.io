@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const navLinks = document.querySelectorAll(".greedy-nav a");
     const currentPath = window.location.pathname;
 
+    // 1. Základní kontrola při načtení stránky
     navLinks.forEach(link => {
         const href = link.getAttribute("href");
         if (!href) return;
@@ -16,6 +17,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 
+    // 2. Logika pro scrollování a kotvy na hlavní stránce
     const sections = document.querySelectorAll("div[id]");
     if (sections.length > 0 && (currentPath === "/" || currentPath.endsWith("/index.html"))) {
         let isClickScrolling = false;
@@ -62,21 +64,27 @@ document.addEventListener("DOMContentLoaded", function() {
 
             navLinks.forEach(link => {
                 const href = link.getAttribute("href");
-                if (href && (href.startsWith("#") || href.includes("/#"))) {
-                    const isMatch = (href === "#" + currentSectionId || href === "/#" + currentSectionId);
+                if (!href) return;
 
+                // Práce s kotvovými odkazy (sekce)
+                if (href.startsWith("#") || href.includes("/#")) {
+                    const isMatch = (href === "#" + currentSectionId || href === "/#" + currentSectionId);
                     if (isMatch) {
                         link.classList.add("active-link");
-                        if (link.parentElement) {
-                            link.parentElement.classList.add("active");
-                        }
+                        if (link.parentElement) link.parentElement.classList.add("active");
                     } else {
-                        if (!window.location.pathname.includes(href.replace('/',''))) {
-                            link.classList.remove("active-link");
-                            if (link.parentElement) {
-                                link.parentElement.classList.remove("active");
-                            }
-                        }
+                        link.classList.remove("active-link");
+                        if (link.parentElement) link.parentElement.classList.remove("active");
+                    }
+                } 
+                // Speciální pravidlo pro "Domů": Zhasni ho, jakmile uživatel sjede dolů do sekcí
+                else if (href === "/" || href === "") {
+                    if (scrollY > 200 || currentSectionId !== "") {
+                        link.classList.remove("active-link");
+                        if (link.parentElement) link.parentElement.classList.remove("active");
+                    } else {
+                        link.classList.add("active-link");
+                        if (link.parentElement) link.parentElement.classList.add("active");
                     }
                 }
             });
