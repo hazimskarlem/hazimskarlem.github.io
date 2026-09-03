@@ -8,33 +8,29 @@ header:
 excerpt: "Vítejte na mém webu o házení muškařským prutem."
 ---
 
-## O mně
-<div id="profil"></div>
+## O mně {#profil}
 Tady bude tvůj text o tobě, tvé koníčky atd.
 
 ---
 
-## Ceník
-<div id="cenik"></div>
+## Ceník {#cenik}
 Tady vypíšeš své ceny...
 
 ---
 
-## Rezervační systém
-<div id="rezervace"></div>
+## Rezervační systém {#rezervace}
 Tady můžeš vložit odkaz na rezervační formulář nebo externí systém (např. Calendly, Google Form apod.).
 
 ---
 
-## Kontakt a IČO
-<div id="kontakt"></div>
+## Kontakt a IČO {#kontakt}
 * **Jméno:** Karel 
 * **IČO:** 12345678
 * **E-mail:** karel@email.cz
 
 <script>
 document.addEventListener("DOMContentLoaded", function() {
-    const sections = document.querySelectorAll("div[id]");
+    const sections = document.querySelectorAll("h2[id]");
     const navLinks = document.querySelectorAll(".greedy-nav a");
 
     window.addEventListener("scroll", function() {
@@ -42,14 +38,20 @@ document.addEventListener("DOMContentLoaded", function() {
 
         sections.forEach(section => {
             const sectionHeight = section.offsetHeight;
-            const sectionTop = section.offsetTop - 100; // Rezerva pro výšku menu
+            // Odečítáme horní odsazení menu (65px) + menší rezervu
+            const sectionTop = section.offsetTop - 120; 
             const sectionId = section.getAttribute("id");
 
-            if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+            if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight + 150) {
                 navLinks.forEach(link => {
-                    link.parentElement.classList.remove("active");
-                    if (link.getAttribute("href") === "#" + sectionId || link.getAttribute("href") === "/#" + sectionId) {
-                        link.parentElement.classList.add("active");
+                    if (link.parentElement) {
+                        link.parentElement.classList.remove("active");
+                    }
+                    const href = link.getAttribute("href");
+                    if (href === "#" + sectionId || href === "/#" + sectionId) {
+                        if (link.parentElement) {
+                            link.parentElement.classList.add("active");
+                        }
                     }
                 });
             }
