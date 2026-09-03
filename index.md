@@ -36,9 +36,25 @@ Tady můžeš vložit odkaz na rezervační formulář nebo externí systém (na
 document.addEventListener("DOMContentLoaded", function() {
     const sections = document.querySelectorAll("div[id]");
     const navLinks = document.querySelectorAll(".greedy-nav a");
-    let isClickScrolling = false; // Ochrana proti přepisování při kliknutí
+    let isClickScrolling = false;
 
-    // Kliknutí na menu okamžitě rozsvítí danou položku a pozastaví scroll detekci
+    // 1. Automatické rozsvícení položek podle toho, na jaké jsme stránce (Domů / Články)
+    const currentPath = window.location.pathname;
+    navLinks.forEach(link => {
+        const href = link.getAttribute("href");
+        // Pokud jsme na hlavní stránce a odkaz je kořenový
+        if (currentPath === "/" && (href === "/" || href === "")) {
+            link.classList.add("active-link");
+            if (link.parentElement) link.parentElement.classList.add("active");
+        } 
+        // Pokud jsme na podstránce (např. články) a odkaz na ni sedí
+        else if (currentPath !== "/" && href && currentPath.includes(href) && href !== "/") {
+            link.classList.add("active-link");
+            if (link.parentElement) link.parentElement.classList.add("active");
+        }
+    });
+
+    // 2. Kliknutí na menu v rámci jedné stránky (kotvy)
     navLinks.forEach(link => {
         link.addEventListener("click", function() {
             const href = this.getAttribute("href");
@@ -46,14 +62,16 @@ document.addEventListener("DOMContentLoaded", function() {
                 isClickScrolling = true;
                 
                 navLinks.forEach(l => {
-                    l.classList.remove("active-link");
-                    if (l.parentElement) l.parentElement.classList.remove("active");
+                    // Necháme vyčištěné ostatní kotvy, ale nemazat případně jiné hlavní stránky
+                    if (l.getAttribute("href").startsWith("#") || l.getAttribute("href").includes("/#")) {
+                        l.classList.remove("active-link");
+                        if (l.parentElement) l.parentElement.classList.remove("active");
+                    }
                 });
 
                 this.classList.add("active-link");
                 if (this.parentElement) this.parentElement.classList.add("active");
 
-                // Počkej, než dojede animace scrollování, a pak zase povol detekci
                 setTimeout(() => {
                     isClickScrolling = false;
                 }, 600);
@@ -61,39 +79,43 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 
-    // Detekce scrollování pro zbytek případů
-    window.addEventListener("scroll", function() {
-        if (isClickScrolling) return; // Pokud uživatel kliknul, nesahat do toho
+    // 3. Detekce scrollování pro kotvy na hlavní stránce
+    if (currentPath === "/") {
+        window.addEventListener("scroll", function() {
+            if (isClickScrolling) return;
 
-        let scrollY = window.pageYOffset;
-        let currentSectionId = "";
+            let scrollY = window.pageYOffset;
+            let currentSectionId = "";
 
-        sections.forEach(section => {
-            const sectionHeight = section.offsetHeight;
-            const sectionTop = section.offsetTop - 120; 
-            const sectionId = section.getAttribute("id");
+            sections.forEach(section => {
+                const sectionHeight = section.offsetHeight;
+                const sectionTop = section.offsetTop - 120; 
+                const sectionId = section.getAttribute("id");
 
-            if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight + 100) {
-                currentSectionId = sectionId;
-            }
-        });
-
-        navLinks.forEach(link => {
-            const href = link.getAttribute("href");
-            const isMatch = (href === "#" + currentSectionId || href === "/#" + currentSectionId);
-
-            if (isMatch) {
-                link.classList.add("active-link");
-                if (link.parentElement) {
-                    link.parentElement.classList.add("active");
+                if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight + 100) {
+                    currentSectionId = sectionId;
                 }
-            } else {
-                link.classList.remove("active-link");
-                if (link.parentElement) {
-                    link.parentElement.classList.remove("active");
+            });
+
+            navLinks.forEach(link => {
+                const href = link.getAttribute("href");
+                if (href && (href.startsWith("#") || href.includes("/#"))) {
+                    const isMatch = (href === "#" + currentSectionId || href === "/#" + currentSectionId);
+
+                    if (isMatch) {
+                        link.classList.add("active-link");
+                        if (link.parentElement) {
+                            link.parentElement.classList.add("active");
+                        }
+                    } else {
+                        link.classList.remove("active-link");
+                        if (link.parentElement) {
+                            link.parentElement.classList.remove("active");
+                        }
+                    }
                 }
-            }
+            });
         });
-    });
+    }
 });
 </script>
