@@ -77,27 +77,39 @@ a:focus, button:focus, .site-title:focus, :target, h1:focus, h2:focus, h3:focus 
   box-shadow: none !important;
 }
 
-
 /* ==========================================================
-   5. ÚPRAVA VELIKOSTI PÍSMA
+   5. ÚPRAVA VELIKOSTI PÍSMA A HORNÍ LIŠTY
    ========================================================== */
 
-body {
-  font-size: 15px !important;
-}
-
+/* Zmenšení pouze horního menu a názvu webu */
 .masthead__menu-item,
 .greedy-nav .visible-links a,
 .site-title {
-  font-size: 0.9rem !important;
+  font-size: 0.85rem !important;
   font-weight: 500;
 }
 
-.page__title, 
-h1, h2, h3 {
-  letter-spacing: -0.02em;
+/* Zmenšení výšky horní lišty (masthead), aby odpovídala menšímu menu */
+.masthead {
+  min-height: 45px !important;
 }
 
-h1 { font-size: 2rem !important; }
-h2 { font-size: 1.6rem !important; }
-h3 { font-size: 1.3rem !important; }
+.greedy-nav {
+  min-height: 45px !important;
+  padding: 5px 0 !important;
+}
+
+.greedy-nav .site-title {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  line-height: 35px !important;
+}
+
+.greedy-nav .visible-links li {
+  line-height: 35px !important;
+}
+
+/* Úprava horního odsazení celé stránky (body), aby menší lišta nepřekrývala obsah */
+body {
+  padding-top: 50px !important;
+}
