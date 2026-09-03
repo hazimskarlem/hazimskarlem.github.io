@@ -68,3 +68,11 @@ search: false
 body {
   padding-top: 65px !important;
 }
+
+/* Odstranění nehezkého ohraničení (focus ring) po kliknutí na odkazy v menu */
+.greedy-nav a:focus,
+.greedy-nav button:focus,
+.site-title:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
