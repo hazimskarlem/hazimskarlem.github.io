@@ -16,7 +16,7 @@ minimal_mistakes_skin    : "dirt"
 # "default", "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise", "catppuccin_latte", "catppuccin_mocha"
 
 # Site Settings
-locale                   : "en-US"
+locale                   : "cs-CZ"
 direction                : # "ltr" (default), "rtl" # set the direction of the page
 title                    : "Házím s Karlem"
 title_separator          : "-"
