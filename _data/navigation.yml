@@ -1,8 +1,6 @@
-# Hlavní navigační lišta
+# Hlavní navigační menu
 main:
-  - title: "Domů"
+  - title: "Profil"
     url: /
   - title: "Články"
-    url: /zapisky/  # nebo seznam článků
-  - title: "O mně"
-    url: /about/
+    url: /clanky/
