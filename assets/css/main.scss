@@ -49,7 +49,7 @@ search: false
 
 
 /* ==========================================================
-   3. FIXNÍ (PŘILEPENÉ) HORNÍ MENU A ODSAZENÍ PRO PODSTRÁNKY
+   3. FIXNÍ HORNÍ MENU A BEZPEČNÉ ODSAZENÍ PRO VŠECHNY STRÁNKY
    ========================================================== */
 
 .masthead {
@@ -62,13 +62,10 @@ search: false
   box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 
-/* Odsazení hlavní části webu a podstránek, aby menu nepřekrývalo obsah */
-body {
-  padding-top: 50px !important;
-}
-
+/* Toto spolehlivě odsadí obsah na titulní stránce i na všech podstránkách (včetně Článků),
+   aby fixní lišta nikdy nepřekrývala nadpisy. */
 .initial-content {
-  padding-top: 20px;
+  padding-top: 5em !important;
 }
 
 
@@ -83,31 +80,12 @@ a:focus, button:focus, .site-title:focus, :target, h1:focus, h2:focus, h3:focus 
 
 
 /* ==========================================================
-   5. ÚPRAVA VELIKOSTI PÍSMA A HORNÍ LIŠTY
+   5. ÚPRAVA VELIKOSTI PÍSMA POUZE V MENU
    ========================================================== */
 
 .masthead__menu-item,
 .greedy-nav .visible-links a,
 .site-title {
-  font-size: 0.85rem !important;
+  font-size: 0.9rem !important;
   font-weight: 500;
-}
-
-.masthead {
-  min-height: 45px !important;
-}
-
-.greedy-nav {
-  min-height: 45px !important;
-  padding: 5px 0 !important;
-}
-
-.greedy-nav .site-title {
-  padding-top: 0 !important;
-  padding-bottom: 0 !important;
-  line-height: 35px !important;
-}
-
-.greedy-nav .visible-links li {
-  line-height: 35px !important;
 }
