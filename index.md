@@ -5,7 +5,7 @@ header:
   overlay_color: "#000"
   overlay_filter: "0.5"
   overlay_image: /assets/images/karel-img.jpg
-excerpt: "Vítejte na mém webu."
+excerpt: "Vítejte na mém webu o házení muškařským prutem."
 ---
 
 ## O mně
@@ -28,6 +28,6 @@ Tady můžeš vložit odkaz na rezervační formulář nebo externí systém (na
 
 ## Kontakt a IČO
 <div id="kontakt"></div>
-* **Jméno:** Karel Novák
+* **Jméno:** Karel 
 * **IČO:** 12345678
 * **E-mail:** karel@email.cz
