@@ -1,3 +1,26 @@
+---
+# Only the main Sass file needs front matter (the dashes are enough)
+search: false
+---
+
+@charset "utf-8";
+
+@import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
+@import "minimal-mistakes"; // main partials
+
+/* ==========================================================
+   1. NÁZEV WEBU (Vlevo nahoře)
+   ========================================================== */
+
+.site-title {
+  color: #e60000 !important;
+}
+
+.site-title:hover {
+  color: #cc0000 !important;
+}
+
+
 /* ==========================================================
    2. HORNÍ MENU (Hover a aktivní stav s červeným podtržením)
    ========================================================== */
@@ -28,4 +51,51 @@
   height: 4px !important;
   background: #e60000 !important;
   display: block !important;
+}
+
+
+/* ==========================================================
+   3. FIXNÍ HORNÍ MENU A BEZPEČNÉ ODSAZENÍ PRO VŠECHNY STRÁNKY
+   ========================================================== */
+
+.masthead {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9999;
+  background-color: #ffffff !important;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+/* Odsazení obsahu na hlavní stránce i podstránkách, aby fixní lišta nepřekrývala nadpisy */
+.initial-content {
+  padding-top: 5em !important;
+}
+
+
+/* ==========================================================
+   4. ODSTRANĚNÍ NEŽÁDOUCÍCH RÁMEČKŮ A IKON ŘETĚZU
+   ========================================================== */
+
+a:focus, button:focus, .site-title:focus, :target, h1:focus, h2:focus, h3:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Skrytí obtěžujících ikon řetězu u nadpisů s kotvami */
+.header-link {
+  display: none !important;
+}
+
+
+/* ==========================================================
+   5. ÚPRAVA VELIKOSTI PÍSMA POUZE V MENU
+   ========================================================== */
+
+.masthead__menu-item,
+.greedy-nav .visible-links a,
+.site-title {
+  font-size: 0.9rem !important;
+  font-weight: 500;
 }
