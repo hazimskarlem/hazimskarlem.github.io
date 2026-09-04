@@ -2,7 +2,7 @@ name: Build and deploy Jekyll to GitHub Pages
 
 on:
   push:
-    branches: ["main"] # Pokud máš hlavní větev 'master', přepni si to tady
+    branches: ["main"]
   workflow_dispatch:
 
 permissions:
@@ -23,7 +23,7 @@ jobs:
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.2' # Zvolí moderní a stabilní Ruby
+          ruby-version: '3.2'
           bundler-cache: true
       - name: Setup Pages
         uses: actions/configure-pages@v4
@@ -43,4 +43,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions-deploy-pages@v4
+        uses: actions/deploy-pages@v4
