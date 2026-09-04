@@ -14,20 +14,20 @@ search: false
    ========================================================== */
 
 /*
-/* Plynulé scrollování pro celé stránky */
+// Plynulé scrollování pro celé stránky
 html {
   scroll-behavior: smooth !important;
 }
 
-/* Zajistí, že při skoku na kotvu (ID) se nadpis schová pod fixní menu s rezervou */
+// Zajistí, že při skoku na kotvu (ID) se nadpis schová pod fixní menu s rezervou
 div[id], section[id] {
-  scroll-margin-top: 90px !important; 
+  scroll-margin-top: 90px !important;  
 }
 
 
-/* ==========================================================
-   1. NÁZEV WEBU (Vlevo nahoře)
-   ========================================================== */
+// ==========================================================
+// 1. NÁZEV WEBU (Vlevo nahoře)
+// ==========================================================
 
 .site-title {
   color: #e60000 !important;
@@ -38,21 +38,21 @@ div[id], section[id] {
 }
 
 
-/* ==========================================================
-   2. HORNÍ MENU - ULTIMÁTNÍ OPRAVA PODTRŽENÍ A AKTIVNÍHO STAVU
-   ========================================================== */
+// ==========================================================
+// 2. HORNÍ MENU - ULTIMÁTNÍ OPRAVA PODTRŽENÍ A AKTIVNÍHO STAVU
+// ==========================================================
 
 .greedy-nav a:hover {
   color: #000000 !important;
 }
 
-/* Odkazy v menu musí mít relativní pozici, aby se podtržení mělo čeho chytit */
+// Odkazy v menu musí mít relativní pozici, aby se podtržení mělo čeho chytit
 .greedy-nav .visible-links a,
 .greedy-nav .hidden-links a {
   position: relative !important;
 }
 
-/* Hover efekt */
+// Hover efekt
 .greedy-nav .visible-links a:hover::before {
   content: "" !important;
   position: absolute !important;
@@ -64,7 +64,7 @@ div[id], section[id] {
   display: block !important;
 }
 
-/* Nekompromisní vynucení barvy, tučnosti a červeného podtržení pro aktivní stav */
+// Nekompromisní vynucení barvy, tučnosti a červeného podtržení pro aktivní stav
 .greedy-nav .visible-links li.active > a,
 .greedy-nav .visible-links a.active-link,
 .greedy-nav .hidden-links li.active > a,
@@ -91,9 +91,9 @@ div[id], section[id] {
 }
 
 
-/* ==========================================================
-   3. FIXNÍ HORNÍ MENU A BEZPEČNÉ ODSAZENÍ PRO VŠECHNY STRÁNKY
-   ========================================================== */
+// ==========================================================
+// 3. FIXNÍ HORNÍ MENU A BEZPEČNÉ ODSAZENÍ PRO VŠECHNY STRÁNKY
+// ==========================================================
 
 .masthead {
   position: fixed !important;
@@ -105,7 +105,7 @@ div[id], section[id] {
   box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 
-/* Sjednocení vnitřního boxu menu, aby se při přechodu mezi stránkami neposkakovalo */
+// Sjednocení vnitřního boxu menu, aby se při přechodu mezi stránkami neposkakovalo
 .masthead__inner-wrap {
   max-width: 100% !important;
   padding-left: 2em !important;
@@ -113,30 +113,30 @@ div[id], section[id] {
   margin: 0 auto !important;
 }
 
-/* Odsazení obsahu na hlavní stránce i podstránkách, aby fixní lišta nepřekrývala nadpisy */
+// Odsazení obsahu na hlavní stránce i podstránkách, aby fixní lišta nepřekrývala nadpisy
 .initial-content {
   padding-top: 5em !important;
 }
 
 
-/* ==========================================================
-   4. ODSTRANĚNÍ NEŽÁDOUCÍCH RÁMEČKŮ A IKON ŘETĚZU
-   ========================================================== */
+// ==========================================================
+// 4. ODSTRANĚNÍ NEŽÁDOUCÍCH RÁMEČKŮ A IKON ŘETĚZU
+// ==========================================================
 
 a:focus, button:focus, .site-title:focus, :target, h1:focus, h2:focus, h3:focus {
   outline: none !important;
   box-shadow: none !important;
 }
 
-/* Skrytí obtěžujících ikon řetězu u nadpisů s kotvami */
+// Skrytí obtěžujících ikon řetězu u nadpisů s kotvami
 .header-link {
   display: none !important;
 }
 
 
-/* ==========================================================
-   5. ÚPRAVA VELIKOSTI PÍSMA POUZE V MENU
-   ========================================================== */
+// ==========================================================
+// 5. ÚPRAVA VELIKOSTI PÍSMA POUZE V MENU
+// ==========================================================
 
 .masthead__menu-item,
 .greedy-nav .visible-links a,
