@@ -8,35 +8,35 @@ search: false
 @import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
 @import "minimal-mistakes"; // main partials
 
-
 // ==========================================================
-// FIXNÍ HORNÍ MENU A BEZPEČNÉ ODSAZENÍ PRO VŠECHNY STRÁNKY
+// FIXNÍ HORNÍ MENU - PLNÁ ŠÍŘKA A KRYCÍ EFEKT
 // ==========================================================
 
 .masthead {
   position: fixed !important;
   top: 0;
   left: 0;
-  width: 100%;
+  width: 100vw !important;         // Vynutí šířku přesně na celou šířku okna prohlížeče
+  max-width: 100vw !important;
   z-index: 9999;
-
-  // TADY JE TA ZMĚNA: Místo #ffffff (bílá) nastavíme průhlednost.
-  // Tím pádem pod menu uvidíš pozadí, které máš nastavené pro celou stránku.
-  background-color: transparent !important;
-
-  // Stín můžeš nechat, nebo smazat, záleží jestli chceš, aby menu plavalo nad obsahem.
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  
+  // Tady si můžeš nechat barvu/průhlednost, jakou potřebuješ, 
+  // ale rozprostře se to teď na 100 % od okraje do okraje.
+  background-color: transparent !important; 
+  
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05); // Stín pro oddělení od obsahu
 }
 
-// Sjednocení vnitřního boxu menu
+// Roztáhnutí vnitřního obsahu menu, aby nevisel v "užším bloku"
 .masthead__inner-wrap {
   max-width: 100% !important;
+  width: 100% !important;
   padding-left: 2em !important;
   padding-right: 2em !important;
-  margin: 0 auto !important;
+  margin: 0 !important;
 }
 
-// Odsazení obsahu, aby fixní lišta nepřekrývala nadpisy
+// Odsazení zbytku stránky, aby ti fixní lišta nezakrývala úplně první nadpis
 .initial-content {
   padding-top: 5em !important;
 }
