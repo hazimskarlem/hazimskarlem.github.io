@@ -48,16 +48,3 @@ search: false
   padding-top: 5em !important;
 }
 
-
-// ==========================================================
-// ODSTRANĚNÍ NEŽÁDOUCÍCH RÁMEČKŮ A IKON ŘETĚZU
-// ==========================================================
-
-a:focus, button:focus, .site-title:focus, :target, h1:focus, h2:focus, h3:focus {
-  outline: none !important;
-  box-shadow: none !important;
-}
-
-.header-link {
-  display: none !important;
-}
