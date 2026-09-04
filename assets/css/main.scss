@@ -8,43 +8,16 @@ search: false
 @import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
 @import "minimal-mistakes"; // main partials
 
+
 // ==========================================================
-// FIXNÍ HORNÍ MENU - PLNÝ PÁS OD KRAJE DO KRAJE
+// ODSTRANĚNÍ NEŽÁDOUCÍCH RÁMEČKŮ A IKON ŘETĚZU
 // ==========================================================
 
-.masthead {
-  position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  width: 100% !important;
-  max-width: 100% !important;
-  margin: 0 !important;
-  z-index: 99999 !important;
-  
-  // Barva pozadí záhlaví (pokud nechceš průhlednost, zadej sem plnou barvu, např. #ffffff)
-  background-color: transparent !important; 
-  
-  // Úplné zrušení rámečků a stínů, které dělají "efekt krabičky"
-  border: none !important;
-  border-bottom: none !important;
+a:focus, button:focus, .site-title:focus, :target, h1:focus, h2:focus, h3:focus {
+  outline: none !important;
   box-shadow: none !important;
-  
-  box-sizing: border-box !important;
 }
 
-// Vnitřní kontejner menu - roztáhneme ho, aby logo a odkazy respektovaly okraje
-.masthead__inner-wrap {
-  max-width: 100% !important;
-  width: 100% !important;
-  margin: 0 !important;
-  padding-left: 2rem !important;
-  padding-right: 2rem !important;
-  box-sizing: border-box !important;
+.header-link {
+  display: none !important;
 }
-
-// Odsazení obsahu pod menu, aby text nezajížděl pod něj
-.initial-content {
-  padding-top: 5em !important;
-}
-
