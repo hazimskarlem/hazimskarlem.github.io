@@ -113,11 +113,11 @@ analytics:
 
 # Site Author
 author:
-  name                   : "Your Name"
+  name                   : "Karel Novák"
   avatar                 : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio                    : "I am an **amazing** person."
-  location               : "Somewhere"
-  email                  :
+  bio                    : "Instruktor házení muškařským prutem"
+  location               : "Čelákovice"
+  email                  : "karel.novak@hazimskarlem.cz"
   # fediverse            : "@you@instance.social"  # used for fediverse:creator meta tag
   links:
     - label: "Email"
