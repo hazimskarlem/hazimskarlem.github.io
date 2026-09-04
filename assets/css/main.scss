@@ -9,90 +9,8 @@ search: false
 @import "minimal-mistakes"; // main partials
 
 
-/* ==========================================================
-   ZAKOMENTOVANÁ VŠECHNA DODATEČNÁ NASTAVENÍ
-   ========================================================== */
-
-/*
-// Plynulé scrollování pro celé stránky
-html {
-  scroll-behavior: smooth !important;
-}
-
-// Zajistí, že při skoku na kotvu (ID) se nadpis schová pod fixní menu s rezervou
-div[id], section[id] {
-  scroll-margin-top: 90px !important;  
-}
-
-
 // ==========================================================
-// 1. NÁZEV WEBU (Vlevo nahoře)
-// ==========================================================
-
-.site-title {
-  color: #e60000 !important;
-}
-
-.site-title:hover {
-  color: #cc0000 !important;
-}
-
-
-// ==========================================================
-// 2. HORNÍ MENU - ULTIMÁTNÍ OPRAVA PODTRŽENÍ A AKTIVNÍHO STAVU
-// ==========================================================
-
-.greedy-nav a:hover {
-  color: #000000 !important;
-}
-
-// Odkazy v menu musí mít relativní pozici, aby se podtržení mělo čeho chytit
-.greedy-nav .visible-links a,
-.greedy-nav .hidden-links a {
-  position: relative !important;
-}
-
-// Hover efekt
-.greedy-nav .visible-links a:hover::before {
-  content: "" !important;
-  position: absolute !important;
-  bottom: 0 !important;
-  left: 0 !important;
-  width: 100% !important;
-  height: 4px !important;
-  background: #e60000 !important;
-  display: block !important;
-}
-
-// Nekompromisní vynucení barvy, tučnosti a červeného podtržení pro aktivní stav
-.greedy-nav .visible-links li.active > a,
-.greedy-nav .visible-links a.active-link,
-.greedy-nav .hidden-links li.active > a,
-.greedy-nav .hidden-links a.active-link {
-  color: #000000 !important;
-  font-weight: 600 !important;
-}
-
-.greedy-nav .visible-links li.active > a::before,
-.greedy-nav .visible-links a.active-link::before,
-.greedy-nav .hidden-links li.active > a::before,
-.greedy-nav .hidden-links a.active-link::before {
-  content: "" !important;
-  position: absolute !important;
-  bottom: 0 !important;
-  left: 0 !important;
-  width: 100% !important;
-  height: 4px !important;
-  background: #e60000 !important;
-  display: block !important;
-  visibility: visible !important;
-  opacity: 1 !important;
-  z-index: 10 !important;
-}
-
-
-// ==========================================================
-// 3. FIXNÍ HORNÍ MENU A BEZPEČNÉ ODSAZENÍ PRO VŠECHNY STRÁNKY
+// FIXNÍ HORNÍ MENU A BEZPEČNÉ ODSAZENÍ PRO VŠECHNY STRÁNKY
 // ==========================================================
 
 .masthead {
@@ -120,7 +38,7 @@ div[id], section[id] {
 
 
 // ==========================================================
-// 4. ODSTRANĚNÍ NEŽÁDOUCÍCH RÁMEČKŮ A IKON ŘETĚZU
+// ODSTRANĚNÍ NEŽÁDOUCÍCH RÁMEČKŮ A IKON ŘETĚZU
 // ==========================================================
 
 a:focus, button:focus, .site-title:focus, :target, h1:focus, h2:focus, h3:focus {
@@ -134,14 +52,3 @@ a:focus, button:focus, .site-title:focus, :target, h1:focus, h2:focus, h3:focus 
 }
 
 
-// ==========================================================
-// 5. ÚPRAVA VELIKOSTI PÍSMA POUZE V MENU
-// ==========================================================
-
-.masthead__menu-item,
-.greedy-nav .visible-links a,
-.site-title {
-  font-size: 0.9rem !important;
-  font-weight: 500;
-}
-*/
